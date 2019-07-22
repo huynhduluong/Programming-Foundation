@@ -1,5 +1,6 @@
 var showImage = null;
 var hideImage = null;
+var output = null;
 var showcanvas;
 var hidecanvas;
 var outputcanvas;
@@ -41,7 +42,7 @@ function shift(image){
 }
 
 function combine(show,hide){
-    var output = new SimpleImage(show.getWidth(),show.getHeight());
+    output = new SimpleImage(show.getWidth(),show.getHeight());
     for (var px of output.values()){
         var x = px.getX();
         var y = px.getY();
@@ -57,10 +58,37 @@ function combine(show,hide){
 function Output() {	
 	var start = chop2hide(showImage);
 	var end = shift(hideImage);
-	var stego = combine(start,end);
+	combine(start,end);
+	doClear(showcanvas);
+	doClear(hidecanvas);
 	outputcanvas = document.getElementById("combineOutput");
-	stego.drawTo(outputcanvas);		
+	output.drawTo(outputcanvas);		
 }
+
+// function multi(image){
+//     for (var px of image.values()){
+//         px.setRed(px.getRed()%16*16);
+//         px.setGreen(px.getGreen()%16*16);
+//         px.setBlue(px.getBlue()%16*16);
+//     }
+//     return image;
+// }
+
+// function show2Image(){
+// 	var imgInput = output;
+// 	if (imgInput == null || !imgInput.complete()) {
+// 		alert("Some problem");
+// 	}
+// 	else{
+// 		var Image1 = chop2hide(imgInput);
+// 		var Image2 = multi(imgInput);
+// 		var ImageCanvas1 = document.getElementById("showOutput");
+// 		var ImageCanvas2 = document.getElementById("hideOutput");
+// 		Image1.drawTo(ImageCanvas1);
+// 		Image2.drawTo(ImageCanvas2);
+// 		doClear(outputcanvas);
+// 	}
+// }
 
 function clearCanvas() {
 	doClear(showcanvas);
