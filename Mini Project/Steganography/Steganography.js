@@ -2,6 +2,7 @@ var showImage = null;
 var hideImage = null;
 var showcanvas;
 var hidecanvas;
+var outputcanvas;
 
 function uploadshowImage() {
 	showcanvas = document.getElementById("showOutput");
@@ -11,7 +12,7 @@ function uploadshowImage() {
 }
 function uploadhideImage() {
 	hidecanvas = document.getElementById("hideOutput");
-	var bgInput = document.getElementById("hideimg");
+	var hideInput = document.getElementById("hideimg");
 	hideImage = new SimpleImage(hideInput);
 	hideImage.drawTo(hidecanvas);
 }
@@ -57,12 +58,14 @@ function Output() {
 	var start = chop2hide(showImage);
 	var end = shift(hideImage);
 	var stego = combine(start,end);
-		
+	outputcanvas = document.getElementById("combineOutput");
+	stego.drawTo(outputcanvas);		
 }
 
 function clearCanvas() {
 	doClear(showcanvas);
 	doClear(hidecanvas);
+	doClear(outputcanvas);
 }
 
 function doClear(canvas) {
