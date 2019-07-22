@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Filter</title>
+	<link rel="stylesheet" type="text/css" href="ImageFilter.css">
+	<script src="ImageFilter.js"></script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1>Filter Fun</h1>
+	<canvas id="output"></canvas>
+	<h2>Load Image</h2>
+	<p>	
+		<input type="file" multiple="false" accept="image/*" id="fileinput" onchange="upload();" >
+	</p>
+	<h2>Change Filter</h2>
+	<p>
+		<input type="button" name="gray" id="gray" value="Grayscale" onclick="doGray();">
+		<input type="button" name="red" id="red" value="Red" onclick="doRed();">
+	</p>
+	<p>
+		<input type="button" name="reset" id="reset" value="Reset Image" onclick="resetImage();">
+	</p>
+
+</body>
+</html>

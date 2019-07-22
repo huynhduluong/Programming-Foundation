@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Composite 2 Image</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		canvas{
+			width: 300px;
+			height: auto;
+			border: 1px solid #000;
+		}		
+	</style>
+
+	<script language="javascript">
+		var fgImage = null ;
+		var bgImage = null;
+		var bgcanvas;
+		var fgcanvas;
+
+		function uploadfgImage() {
+			fgcanvas = document.getElementById("fgOutput");
+			var fgInput = document.getElementById("fgimg");
+			fgImage = new SimpleImage(fgInput);
+			fgImage.drawTo(fgcanvas);
+		}
+		function uploadbgImage() {
+			bgcanvas = document.getElementById("bgOutput");
+			var bgInput = document.getElementById("bgimg");
+			bgImage = new SimpleImage(bgInput);
+			bgImage.drawTo(bgcanvas);
+		}
+
+		function createComposite() {
+			var output = new SimpleImage(fgImage.getWidth(),fgImage.getHeight());
+			for(var pixel of fgImage.values()){
+				var x = pixel.getX();
+				var y = pixel.getY();
+				if (pixel.getGreen() > 240) {					
+					var bgPixel = bgImage.getPixel(x,y);
+					output.setPixel(x,y,bgPixel);
+				}
+				else{
+					output.setPixel(x,y,pixel);
+				}
+			}
+			return output;
+		}
+
+		function doGreenScreen() {
+			if (fgImage == null || !fgImage.complete()) {
+				alert("foreground not loaded");
+				return;
+			}
+			if (bgImage == null || !bgImage.complete()) {
+				alert("background not loaded");
+				return;
+			}
+			clearCanvas();
+			var finalImage = createComposite();
+			finalImage.drawTo(fgcanvas);
+		}
+
+		function clearCanvas() {
+			doClear(fgcanvas);
+			doClear(bgcanvas);
+		}
+
+		function doClear(canvas) {
+			var context = canvas.getContext("2d");
+			context.clearRect(0,0,canvas.width,canvas.height);
+		}	
+
+	</script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1 id="t1">Green Screen Web Page - Composite Image </h1>
+
+	<canvas id="fgOutput"></canvas>
+	<canvas id="bgOutput"></canvas>
+
+
+	<p>
+		Foreground: 
+		<input type="file" multiple="false" id="fgimg" accept="image/*" onchange="uploadfgImage();"><br><br>
+		Background: 
+		<input type="file" multiple="false" id="bgimg" accept="image/*" onchange="uploadbgImage();"><br>
+	</p>
+	<input type="button" id="button" value="Create Composite" onclick="doGreenScreen();">
+	&nbsp;
+	<input type="button" id="button" value="Clear Canvases" onclick="clearCanvas();">
+</body>
+</html>

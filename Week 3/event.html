@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Event</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		canvas{
+			width: 300px;
+			height: auto;
+			border: 1px solid #000;
+		}
+		.orangeback{
+			background-color: orange;
+		}
+		.fuchsiaback{
+			background-color: fuchsia;
+		}
+		.blueback{
+			background-color: blue;
+		}
+		div{
+			padding: 5pt;
+			margin-bottom: 10pt;
+			width: 140pt;
+			font-size: 16pt;
+			border: 1px solid lightgray;
+		}		
+	</style>
+	<script language="javascript">
+		function changeColor() {
+			var clr = document.getElementById("color");
+			var d1 = document.getElementById("dd1");
+			var colorInput = clr.value;
+			d1.style.backgroundColor = colorInput;
+		}
+		function changeLime() {
+			var canvas1 = document.getElementById("dd1");
+			canvas1.style.backgroundColor = "lime";
+		}
+		function changeSize() {
+			var d1 = document.getElementById("dd1");
+			var sizeInput = document.getElementById("sldr");
+			var size = sizeInput.value;
+			var ctx = d1.getContext("2d");
+			ctx.fillStyle = "yellow";
+			ctx.fillRect(10,10,size,size);
+		}
+
+	</script>
+</head>
+<body>
+	<h1 id="t1">Canvas Practice - Event</h1>
+
+	<canvas id="dd1" class="orangeback">
+	</canvas>
+
+	<p>
+		<input type="button" name="doLime" id="doLime" value="Change Lime" onclick="changeLime();">
+		<input type="color" name="color" id="color" value="#000" onchange="changeColor();">
+	</p>
+	<p>
+		<input type="range" min="10" max="100" value="10" id="sldr" onchange="changeSize();"> Make square using slider
+	</p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Convert Image to Gray</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		canvas{
+			width: 300px;
+			height: auto;
+			border: 1px solid #000;
+		}		
+	</style>
+
+	<script language="javascript">
+		var image;
+		function upload() {
+			var imgcanvas1 = document.getElementById("dd1");
+			var fileinput = document.getElementById("flinput");
+			image = new SimpleImage(fileinput);
+			image.drawTo(imgcanvas1);
+		}
+		function makeGray() {
+			for(var pixel of image.values()){
+				var avg = (pixel.getRed()+pixel.getGreen()+pixel.getBlue())/3;
+				pixel.setRed(avg);
+				pixel.setGreen(avg);
+				pixel.setBlue(avg);
+			}
+			var imgcanvas2 = document.getElementById("dd2");
+			image.drawTo(imgcanvas2);
+		}
+
+	</script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1 id="t1">Convert Image to Gray</h1>
+
+	<canvas id="dd1"></canvas>
+	<canvas id="dd2"></canvas>
+
+
+	<p>
+		File name: 
+		<input type="file" multiple="false" id="flinput" accept="image/*" onchange="upload();"><br>
+		
+	</p>
+	<input type="button" id="button1" value="Make Gray" onclick="makeGray();">
+</body>
+</html>

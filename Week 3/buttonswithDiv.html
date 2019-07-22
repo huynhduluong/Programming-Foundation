@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Change Pages</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		.orangeback{
+			background-color: orange;
+		}
+		.fuchsiaback{
+			background-color: fuchsia;
+		}
+		.blueback{
+			background-color: blue;
+		}
+		div{
+			padding: 5pt;
+			margin-bottom: 10pt;
+			width: 140pt;
+			font-size: 16pt;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script type="text/javascript">
+		function setOK() {alert("You pressed ok");}
+		function setCancel() {alert("Are you sure you want to cancel?");}
+	</script>
+</head>
+<body>
+	<h1>Changing pages interactively practice</h1>
+	<div id="div1" class="orangeback">
+		Here is div 1
+	</div>
+	<div id="div2" class="fuchsiaback">
+		Here is div 2
+	</div>
+	<input type="button" name="ok" id="ok" value="OK" 
+			onclick="setOK();">
+	&nbsp;
+	<input type="button" name="cancel" id="cancel" value="Cancel" 
+			onclick="setCancel();">
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Change Pages</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		.orangeback{
+			background-color: orange;
+		}
+		.fuchsiaback{
+			background-color: fuchsia;
+		}
+		.blueback{
+			background-color: blue;
+		}
+		div{
+			padding: 5pt;
+			margin-bottom: 10pt;
+			width: 140pt;
+			font-size: 16pt;
+			border: 1px solid lightgray;
+		}
+	</style>
+	<script type="text/javascript">
+		function changeColor() {
+			var divElement1 = document.getElementById("div1");
+			var divElement2 = document.getElementById("div2");
+			divElement1.className = "blueback";
+			divElement2.className = "orangeback";
+		}
+		function changeText() {
+			var divElement1 = document.getElementById("div1");
+			var divElement2 = document.getElementById("div2");
+			divElement1.innerHTML = "England" ;
+			divElement2.innerHTML = "Korea";
+			divElement1.style.color = "white";
+			divElement2.style.color = "red";
+			document.getElementById("changebutton").value = "Button";
+		}
+	</script>
+</head>
+<body>
+	<h1>Changing pages interactively practice</h1>
+	<div id="div1" class="orangeback">
+		Here is div 1
+	</div>
+	<div id="div2" class="fuchsiaback">
+		Here is div 2
+	</div>
+	<input type="button" name="changecolor" id="changecolor" value="Change Color" onclick="changeColor();">
+	&nbsp;
+	<input type="button" name="changetext" id="changetext" value="Change Text" onclick="changeText();">
+	&nbsp;
+	<input type="button" name="changebutton" id="changebutton" value="Change Button" onclick="changeButton();">
+
+</body>
+</html>

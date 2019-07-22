@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		.orangeback{
+			background-color: orange;
+		}
+		.fuchsiaback{
+			background-color: fuchsia;
+		}
+		.blueback{
+			background-color: blue;
+		}
+		div{
+			padding: 5pt;
+			margin-bottom: 10pt;
+			width: 140pt;
+			font-size: 16pt;
+			border: 1px solid lightgray;
+		}		
+	</style>
+	<script language="javascript">
+		function changeRed() {
+			var c = document.getElementById("div1");
+			c.style.backgroundColor = "Red";
+			var context = c.getContext("2d");
+			context.fillStyle = "Yellow";
+			context.fillRect(10,10,60,60);
+			context.fillRect(80,10,60,60);
+			context.fillStyle = "black";
+			context.font = "20px Arial";
+			context.fillText("Hello",15,45);
+		}
+		function changeLime() {
+			var canvas1 = document.getElementById("div1");
+			canvas1.style.backgroundColor = "lime";
+		}
+	</script>
+</head>
+<body>
+	<h1 id="t1">Canvas Practice</h1>
+
+	<canvas id="div1" class="orangeback">
+	</canvas>
+
+	<canvas id="div2" class="fuchsiaback">		
+	</canvas>
+
+	<p>
+		<input type="button" name="doRed" id="doRed" value="Change Red" onclick="changeRed();">
+		<input type="button" name="doLime" id="doLime" value="Change Lime" onclick="changeLime();">
+	</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Display an Image</title>
+	<style type="text/css">
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}
+		canvas{
+			width: 300px;
+			height: auto;
+			border: 1px solid #000;
+		}
+		.orangeback{
+			background-color: orange;
+		}
+		.fuchsiaback{
+			background-color: fuchsia;
+		}
+		.blueback{
+			background-color: blue;
+		}
+		div{
+			padding: 5pt;
+			margin-bottom: 10pt;
+			width: 140pt;
+			font-size: 16pt;
+			border: 1px solid lightgray;
+		}		
+	</style>
+
+	<script language="javascript">
+		function upload() {
+			var imgcanvas = document.getElementById("dd1");
+			var fileinput = document.getElementById("flinput");
+			var image = new SimpleImage(fileinput);
+			image.drawTo(imgcanvas);
+		}
+
+	</script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1 id="t1">Display an Image</h1>
+
+	<canvas id="dd1">
+	</canvas>
+
+	<p>
+		File name: 
+		<input type="file" multiple="false" id="flinput" accept="image/*" onchange="upload();">
+	</p>
+</body>
+</html>
