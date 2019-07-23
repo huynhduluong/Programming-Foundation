@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Using for Loops</title>
+	<style type="text/css">
+		body {
+  			background-color: wheat;
+  			font-family: Verdana;
+  			margin: 40px;
+		}
+
+		canvas {
+ 			border: 1px solid #c3c3c3;
+  			height: 200px;
+		}
+
+		input {
+  			font-size: 12pt;
+		}
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}	
+	</style>
+	<script type="text/javascript">
+		var img = null;
+		var IMG = null;
+		function Createfile() {
+			img = new SimpleImage(200,200);
+			for (var px of img.values()){
+				px.setRed(255);
+				px.setGreen(255);
+				px.setBlue(0);
+			}
+			var Canvas1 = document.getElementById("Input");
+			img.drawTo(Canvas1);
+		}
+		function Output() {
+			IMG = img;
+			for (var px of IMG.values()){
+				px.setRed(255);
+				px.setGreen(0);
+				px.setBlue(255);				
+			}
+			var Canvas2 = document.getElementById("Output");
+			IMG.drawTo(Canvas2);
+		}
+
+	</script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1>Using for Loops</h1>
+	
+	<canvas id="Input"></canvas>
+	<canvas id="Output"></canvas>
+
+	<p>
+		Create file: 
+		<input type="button" id="button" value="Create file" onclick="Createfile();">
+	</p>
+	<input type="button" id="button" value="Change color" onclick="Output();">
+</body>
+</html>
