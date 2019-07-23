@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Create Border</title>
+	<title>Fix bug</title>
 	<style type="text/css">
 		body {
   			background-color: wheat;
@@ -12,8 +12,7 @@
 
 		canvas {
  			border: 1px solid #c3c3c3;
-  			width: 300px;
-  			height: auto;
+  			height: 200px;
 		}
 
 		input {
@@ -27,27 +26,42 @@
 	<script type="text/javascript">
 		var img = null;
 		var IMG = null;
-		function AddImage() {
-			var fileInput = document.getElementById("fileInput")
-			img = new SimpleImage(fileInput);
+		function Createfile() {
+			img = new SimpleImage(200,200);
+			for (var px of img.values()){
+				var x = px.getX();
+  				var y = px.getY();
+  				if (x < img.getWidth()/2){
+    				px.setRed(255);
+  				}
+  				if (y>img.getHeight()/2){
+  				  	px.setBlue(255);
+  				}
+  				else {
+  				  	px.setGreen(255);
+  				}
+			}
 			var Canvas1 = document.getElementById("Input");
 			img.drawTo(Canvas1);
 		}
 		function Output() {
 			IMG = img;
 			for (var px of IMG.values()){
-				var x = IMG.getWidth();
-				var y = IMG.getHeight();
-				if (px.getX()<=10 || px.getX()>=x-10) {
-					px.setRed(0);
-					px.setGreen(0);
-					px.setBlue(0);
-				}
-				if (px.getY()<=10 || px.getY()>=y-10) {
-					px.setRed(0);
-					px.setGreen(0);
-					px.setBlue(0);
-				}
+				var x = px.getX();
+  				var y = px.getY();
+  				if (x < IMG.getWidth()/2){
+    				px.setRed(255);
+  				}
+  				if (y > IMG.getHeight()/2){
+  				  	px.setBlue(255);
+  				}
+  				else {
+  					if (x < IMG.getWidth()/2) {
+  						px.setGreen(0);
+  					}
+  					else
+  				  		px.setGreen(255);
+  				}								
 			}
 			var Canvas2 = document.getElementById("Output");
 			IMG.drawTo(Canvas2);
@@ -55,17 +69,16 @@
 
 	</script>
 </head>
-<body>
+<body onload="Createfile()">
 	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-	<h1>Create Border</h1>
+	<h1>Fix bug</h1>
 	
 	<canvas id="Input"></canvas>
 	<canvas id="Output"></canvas>
 
 	<p>
-		Create file: 
-		<input type="file" multiple="false" id="fileInput" accept="image/*" onchange="AddImage();">
+
 	</p>
-	<input type="button" id="button" value="Create Border" onclick="Output();">
+	<input type="button" id="button" value="Change color" onclick="Output();">
 </body>
 </html>
