@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Modifying Images Part 2</title>
+	<style type="text/css">
+		body {
+  			background-color: wheat;
+  			font-family: Verdana;
+  			margin: 40px;
+		}
+
+		canvas {
+ 			border: 1px solid #c3c3c3;
+  			width: 300px;
+  			height: auto;
+		}
+
+		input {
+  			font-size: 12pt;
+		}
+		h1{
+			color: dimgray;
+			font-family: arial;
+		}	
+	</style>
+	<script type="text/javascript">
+		var img = null;
+		var IMG = null;
+		function AddImage() {
+			var fileInput = document.getElementById("fileInput")
+			img = new SimpleImage(fileInput);
+			var Canvas1 = document.getElementById("Input");
+			img.drawTo(Canvas1);
+		}
+		function Output() {
+			IMG = img;
+			for (var px of IMG.values()){
+				if (px.getRed() == 0) {
+					px.setRed(255);
+					px.setGreen(255);
+					px.setBlue(0);
+				}
+			}
+			var Canvas2 = document.getElementById("Output");
+			IMG.drawTo(Canvas2);
+		}
+
+	</script>
+</head>
+<body>
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+	<h1>Change image Duke-Blue-Devil to yellow color</h1>
+	
+	<canvas id="Input"></canvas>
+	<canvas id="Output"></canvas>
+
+	<p>
+		Create file: 
+		<input type="file" multiple="false" id="fileInput" accept="image/*" onchange="AddImage();">
+	</p>
+	<input type="button" id="button" value="Change color" onclick="Output();">
+</body>
+</html>
